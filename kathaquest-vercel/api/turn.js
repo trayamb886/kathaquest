@@ -3,7 +3,7 @@
 // No extra config needed.
 
 const GEMINI_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
 
 const SYSTEM_PROMPT = `You are the Dungeon Master for "KathaQuest", an educational interactive
 visual novel for children (ages 8-14) about Indian history and folklore.
