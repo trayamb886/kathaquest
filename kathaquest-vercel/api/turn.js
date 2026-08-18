@@ -35,12 +35,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Missing conversation history" });
     }
 
-    const body = {
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents: history,
-      generationConfig: { temperature: 0.9 },
-    };
-
+	const body = {
+  	system_instruction: {
+   	 parts: [{ text: SYSTEM_PROMPT }]
+  	},
+  	contents: history
+	};
     const geminiResp = await fetch(`${GEMINI_URL}?key=${process.env.GEMINI_API_KEY}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
