@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --ink: #1c1330;
+  --ink-deep: #120c22;
+  --gold: #d4a73a;
+  --vermilion: #c1443c;
+  --teal: #2c6e63;
+  --parchment: #f6efdd;
+  --parchment-dim: #e7ddc0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(circle at 50% -10%, #2a1c4d, var(--ink-deep) 65%);
+  color: var(--parchment);
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Start screen ---------- */
+
+.start-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.start-screen h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 8vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0;
+  background: linear-gradient(120deg, var(--gold), #f0d78c 50%, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--parchment-dim);
+  margin: 0 0 1.5rem;
+}
+
+.start-screen label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+}
+
+.start-screen input {
+  width: min(90vw, 420px);
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #4a3a72;
+  background: #241a3d;
+  color: var(--parchment);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.start-screen button {
+  margin-top: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: linear-gradient(120deg, var(--vermilion), #a83530);
+  color: var(--parchment);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.start-screen button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(193, 68, 60, 0.35);
+}
+
+.start-screen button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ff9d94;
+  font-size: 0.9rem;
+}
+
+/* ---------- Game screen ---------- */
+
+.game-screen {
+  max-width: 560px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-panel {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-bottom: 3px solid var(--gold);
+  border-radius: 0 0 40% 40% / 0 0 8% 8%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dialogue-box {
+  position: relative;
+  flex: 1;
+  margin: -1.25rem 1rem 1rem;
+  padding: 1.5rem 1.25rem 1.25rem;
+  background: var(--parchment);
+  color: var(--ink);
+  border-radius: 14px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* signature corner-flourish motif, echoing manuscript borders */
+.dialogue-box::before,
+.dialogue-box::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--vermilion);
+  top: 8px;
+}
+
+.dialogue-box::before {
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.dialogue-box::after {
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.dialogue-box p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.choices button {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbb98a;
+  background: #fffdf5;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.choices button:hover:not(:disabled) {
+  border-color: var(--vermilion);
+  background: #fff6ee;
+}
+
+.choices button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dialogue-box > button {
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--teal);
+  background: var(--teal);
+  color: var(--parchment);
+  font-weight: 600;
+}
